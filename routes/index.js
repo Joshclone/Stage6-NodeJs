@@ -50,7 +50,14 @@ router.post('/dashboard', check, async function (req, res) {
 //checks if the person is authorized to delete
 router.delete('/post/:id', check, approve, function (req, res) {
   const postID = req.params.id;
-  res.send("You are authorized");
+  postSchema.findByIdAndDelete(postID, '', function (err, deletedPost) {
+if(err) console.log();
+res.json({
+ successful: true,
+ message: "Deleted successfully",
+ deletedPost
+});
+});
 });
 
 
