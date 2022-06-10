@@ -6,13 +6,16 @@ async function approve(req, res, next) {
     const postID = req.params.id; 
     const post = await postSchema.findById(postID, '');
         
-    if (post._userID == userID) {
+    
+
+  if(!post) {
+       res.send("Post has been deleted");
+} else {
+  if (post.userID.toString() == userID.toString()) {
         next();
     } else {
-        res.send("You are not allowed to access this route");
-    }
-
-
+   res.send("You are not allowed to access this route");
+}
 
 };
 
