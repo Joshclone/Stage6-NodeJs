@@ -16,7 +16,10 @@ async function approve(req, res, next) {
     } else {
    res.send("You are not allowed to access this route");
 }
-
+     
+      
+}
 };
 
-module.exports = { approve };
+  module.exports = { approve };
+
